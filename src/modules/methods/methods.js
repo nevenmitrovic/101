@@ -25,8 +25,17 @@ export const Start = () => {
     }
     else {
         document.querySelector(view.getElements().userTwoBorder).classList.remove("red");
-        view.firstPointDialog(model.setFirstPointUser());
-        
+        if (model.getUsers().userOne.flag === 0 && model.getUsers().userTwo.flag === 0){
+            view.firstPointDialog(model.setFirstPointUser());
+        }
+        if (model.getUsers().userOne.flag === 1) {
+            document.querySelector(view.getElements().userOneBorder).classList.add("red");
+            document.querySelector(view.getElements().userTwoBorder).classList.remove("red");
+        }
+        else {
+            document.querySelector(view.getElements().userOneBorder).classList.remove("red");
+            document.querySelector(view.getElements().userTwoBorder).classList.add("red");
+        }
     }
 }
 

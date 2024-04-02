@@ -63,14 +63,17 @@ export const model = (() => {
             users.userTwo.firstPoint = number;
         },
         setFirstPointUser: () => {
-            if (users.userOne.firstPoint > users.userTwo.firstPoint) {
+            if (users.userOne.firstPoint > users.userTwo.firstPoint || users.userOne.firstPoint === users.userTwo.firstPoint) {
                 users.userOne.flag = 1;
-                return view.getElements().inputOne ? 'Player 1' : view.getElements().inputOne;
+                return view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue();
             }
             else {
                 users.userTwo.flag = 1;
-                return view.getElements().inputTwo ? 'Player 2' : view.getElements().inputTwo;
+                return view.getInputTwoValue() === '' ? 'Player 2' : view.getInputTwoValue();
             }
-        }
+        },
+        getUsers: () => {
+            return users;
+        },
     }
 })();
