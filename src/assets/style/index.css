@@ -136,3 +136,15 @@ img {
 .ok {
     width: 50px;
 }
+
+.winner {
+    position: absolute;
+    background-color: #b7b7b7;
+    width: 360px;
+    height: 30vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

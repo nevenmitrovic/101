@@ -17,7 +17,9 @@ export const view = (() => {
         userTwoBorder: '.player2',
         firstPointDialog: '.firstPointDialog',
         FirstPointUser: '.name',
-        ok: '.ok'
+        ok: '.ok',
+        winnerDialog: '.winner',
+        winner: '.userWinner'
     };
 
     return {
@@ -52,6 +54,13 @@ export const view = (() => {
             const userTwo = nicknames.find(e => e.id === 2);
             document.querySelector(view.getElements().userOneNick).textContent = userOne.nick === '' ? 'Player 1' : userOne.nick;
             document.querySelector(view.getElements().userTwoNick).textContent = userTwo.nick === '' ? 'Player 2' : userTwo.nick;
+        },
+        openWinner: (nick) => {
+            document.querySelector(elements.winnerDialog).classList.remove("visibility");
+            document.querySelector(elements.winner).textContent = `${nick}`;
+        },
+        stopVisibility: () => {
+            document.querySelector(elements.stop).classList.remove("visibility");
         }
     }
 

@@ -29,6 +29,12 @@ export const Start = () => {
         model.resetCurrentPoints();
     }
     else {
+        if (model.getUsers().userOne.totalPoints > 101) {
+            view.openWinner(view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue())
+        }
+        if (model.getUsers().userTwo.totalPoints > 101) {
+            view.openWinner(view.getInputTwoValue() === '' ? 'Player 1' : view.getInputTwoValue())
+        }
         document.querySelector(view.getElements().userTwoBorder).classList.remove("red");
         if (model.getUsers().userOne.flag === 0 && model.getUsers().userTwo.flag === 0){
             view.firstPointDialog(model.setFirstPointUser());
@@ -49,11 +55,23 @@ export const Start = () => {
                 model.setUserTwoFlag(1);
                 view.setTotalPoints({ id: 1, value: model.getUsers().userOne.totalPoints });
                 model.resetCurrentPoints();
+                if (model.getUsers().userOne.totalPoints > 101) {
+                    view.openWinner(view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue())
+                }
+                if (model.getUsers().userTwo.totalPoints > 101) {
+                    view.openWinner(view.getInputTwoValue() === '' ? 'Player 1' : view.getInputTwoValue())
+                }
             }
         }
         else {
             document.querySelector(view.getElements().userOneBorder).classList.remove("red");
             document.querySelector(view.getElements().userTwoBorder).classList.add("red");
+            if (model.getUsers().userOne.totalPoints > 101) {
+                view.openWinner(view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue())
+            }
+            if (model.getUsers().userTwo.totalPoints > 101) {
+                view.openWinner(view.getInputTwoValue() === '' ? 'Player 1' : view.getInputTwoValue())
+            }
             if (number === 1) {
                 model.setUserTwoFlag(0);
                 model.setUserTwoTotal(number);
@@ -66,13 +84,40 @@ export const Start = () => {
                 model.setUserOneFlag(1);
                 view.setTotalPoints({ id: 2, value: model.getUsers().userTwo.totalPoints });
                 model.resetCurrentPoints();
+                if (model.getUsers().userOne.totalPoints > 101) {
+                    view.openWinner(view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue())
+                }
+                if (model.getUsers().userTwo.totalPoints > 101) {
+                    view.openWinner(view.getInputTwoValue() === '' ? 'Player 1' : view.getInputTwoValue())
+                }
             }
         }
     }
 }
 
 export const Stop = () => {
-    
+    if (model.getUsers().userOne.flag === 1) {
+        document.querySelector(view.getElements().userOneBorder).classList.add("red");
+        document.querySelector(view.getElements().userTwoBorder).classList.remove("red");
+            model.setUserOneTotal(0);
+            model.setUserOneFlag(0);
+            model.setUserTwoFlag(1);
+            view.setTotalPoints({ id: 1, value: model.getUsers().userOne.totalPoints });
+            model.resetCurrentPoints();
+    }
+    else {
+        model.setUserTwoFlag(0);
+        model.setUserTwoTotal(0);
+        model.setUserOneFlag(1);
+        view.setTotalPoints({ id: 2, value: model.getUsers().userTwo.totalPoints });
+        model.resetCurrentPoints();
+        if (model.getUsers().userOne.totalPoints > 101) {
+            view.openWinner(view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue())
+        }
+        if (model.getUsers().userTwo.totalPoints > 101) {
+            view.openWinner(view.getInputTwoValue() === '' ? 'Player 1' : view.getInputTwoValue())
+        }
+    }
 }
 
 export const Hide = () => {
@@ -80,5 +125,5 @@ export const Hide = () => {
     document.querySelector('.currentPoints').classList.remove("visibility");
     model.resetCurrentPoints();
     view.setCurrentPoints(0);
-
+    view.stopVisibility();
 }
