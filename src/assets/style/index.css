@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .border {
@@ -74,4 +75,32 @@ img {
     padding-top: 40px;
     height: 30%;
     font-size: 50px;
+}
+
+.dialog {
+    position: absolute;
+    background-color: #b7b7b7;
+    width: 360px;
+    height: 30vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.usr1 {
+    padding-bottom: 5%;
+}
+
+.usr2 {
+    padding-bottom: 5%;
+}
+
+.submit {
+    width: 50px;
+}
+
+.hidden {
+    visibility: hidden;
 }
