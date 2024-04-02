@@ -20,14 +20,12 @@
           </div>
         </div>
         <div class="playground">
-          <div class="cube">
-            <img src="src/assets//img/1.png" alt="cube" class="image" />
-          </div>
+          <div class="dice"></div>
           <div class="buttons">
             <button class="play">Start</button>
             <button class="stop">Stop</button>
           </div>
-          <div class="currentPoints">
+          <div class="currentPoints visibility">
             points: <span class="current">0</span>
           </div>
         </div>
@@ -35,13 +33,17 @@
       <div class="dialog">
         <div class="usr1">
           <label>Player 1</label> <br />
-          <input type="text" id="username1" placeholder="nick 1"/>
+          <input type="text" id="username1" placeholder="nick 1" />
         </div>
         <div class="usr2">
           <label>Player 2</label> <br />
-          <input type="text" id="username2" placeholder="nick 2"/>
+          <input type="text" id="username2" placeholder="nick 2" />
         </div>
         <button class="submit">Ok</button>
+      </div>
+      <div class="firstPointDialog visibility">
+        <p>The player named <span class="name"></span> has the chance for the first points.</p>
+        <button class="ok">Ok</button>
       </div>
     </div>
 

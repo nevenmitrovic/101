@@ -1,16 +1,13 @@
-export const controllers = (view, model) => {
+import { setNicknames, Start, Stop, Hide } from "./methods/methods.js";
+
+
+export const controllers = (view) => {
     
     const listeners = () => {
-        document.querySelector(view.getElements().submit).addEventListener('click',setNicknames);
-    }
-
-    function setNicknames() {
-        const nicknames = model.addNicknames();
-        const userOne = nicknames.find(e => e.id === 1);
-        const userTwo = nicknames.find(e => e.id === 2);
-        document.querySelector(view.getElements().userOneNick).textContent = userOne.nick === '' ? 'Player 1' : userOne.nick;
-        document.querySelector(view.getElements().userTwoNick).textContent = userTwo.nick === '' ? 'Player 1' : userTwo.nick;
-        document.querySelector(view.getElements().dialog).classList.add("hidden");
+        document.querySelector(view.getElements().submit).addEventListener('click', setNicknames);
+        document.querySelector(view.getElements().start).addEventListener('click', Start);
+        document.querySelector(view.getElements().stop).addEventListener('click', Stop);
+        document.querySelector(view.getElements().ok).addEventListener('click', Hide);
     }
 
     return {
