@@ -33,7 +33,12 @@ export const view = (() => {
             document.querySelector(elements.currentPoints).textContent = currentPoints;
         },
         setTotalPoints: (user) => {
-
+            if (user.id === 1) {
+                document.querySelector(elements.userOneTotal).textContent = user.value;
+            }
+            else {
+                document.querySelector(elements.userTwoTotal).textContent = user.value;
+            }
         },
         firstPointDialog: (name) => {
             document.querySelector(elements.firstPointDialog).classList.remove("visibility");

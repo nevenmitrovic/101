@@ -7,12 +7,12 @@ export const model = (() => {
         userOne: {
             totalPoints: 0,
             firstPoint: null,
-            flag: 0
+            flag: 0,
         },
         userTwo: {
             totalPoints: 0,
             firstPoint: null,
-            flag: 0
+            flag: 0,
         }
     };
 
@@ -65,15 +65,35 @@ export const model = (() => {
         setFirstPointUser: () => {
             if (users.userOne.firstPoint > users.userTwo.firstPoint || users.userOne.firstPoint === users.userTwo.firstPoint) {
                 users.userOne.flag = 1;
+                users.userOne.flag2 = 1;
                 return view.getInputOneValue() === '' ? 'Player 1' : view.getInputOneValue();
             }
             else {
                 users.userTwo.flag = 1;
+                users.userTwo.flag2 = 1;
                 return view.getInputTwoValue() === '' ? 'Player 2' : view.getInputTwoValue();
             }
         },
         getUsers: () => {
             return users;
         },
+        setUserOneFlag: (num) => {
+            users.userOne.flag = num;
+        },
+        setUserTwoFlag: (num) => {
+            users.userTwo.flag = num;
+        },
+        setUserOneTotal: (num) => {
+            if (num === 1) {
+                users.userOne.totalPoints = 0;
+            }
+            users.userOne.totalPoints = currentPoints;
+        },
+        setUserTwoTotal: (num) => {
+            if (num === 1) {
+                users.userTwo.totalPoints = 0;
+            }
+            users.userTwo.totalPoints = currentPoints;
+        }
     }
 })();
